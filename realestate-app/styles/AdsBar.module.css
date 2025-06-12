@@ -1,0 +1,22 @@
+.adsBar {
+  width: 100vw;
+  background: linear-gradient(90deg, #0070f3 0%, #00c6fb 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 12px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+}
+.adsText {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-rtl 18s linear infinite;
+}
+@keyframes scroll-rtl {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100vw); }
+}

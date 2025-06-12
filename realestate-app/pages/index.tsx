@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import dynamic from "next/dynamic";
 import FilterBar from "@/components/FilterBar";
 import { mockUnits } from "@/types/mockUnits";
+import AdsBar from "@/components/AdsBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function Home() {
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
         <main className={styles.main}>
+          <AdsBar />
           <FilterBar />
           {/* خريطة تفاعلية للوحدات العقارية */}
           <div style={{ width: "100%", maxWidth: 900, margin: "32px auto" }}>
