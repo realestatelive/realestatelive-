@@ -21,9 +21,9 @@ const yesNo = [
   { label: "لا", value: "no" },
 ];
 
-const FilterBar: React.FC = () => {
+const FilterBar: React.FC<{ onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void }> = ({ onSubmit }) => {
   return (
-    <form className={styles.filterBar}>
+    <form className={styles.filterBar} onSubmit={onSubmit}>
       <select name="country" defaultValue="مصر">
         <option value="مصر">مصر</option>
         <option value="الإمارات">الإمارات</option>

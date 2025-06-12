@@ -9,6 +9,7 @@ import AdsBar from "@/components/AdsBar";
 import VoiceSearch from "@/components/VoiceSearch";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ChatBot from "@/components/ChatBot";
+import { useState } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +24,31 @@ const geistMono = Geist_Mono({
 const MapComponent = dynamic(() => import("@/components/MapComponent"), { ssr: false });
 
 export default function Home() {
+  const [filteredUnits, setFilteredUnits] = useState(mockUnits);
+
+  // فلترة الوحدات بناءً على القيم المدخلة
+  const handleFilter = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    let units = mockUnits;
+    if (data.get("country")) units = units.filter(u => u.country === data.get("country"));
+    if (data.get("type")) units = units.filter(u => u.type === data.get("type"));
+    if (data.get("for")) units = units.filter(u => u.for === data.get("for"));
+    if (data.get("developer")) units = units.filter(u => u.developerId === data.get("developer"));
+    if (data.get("compound")) units = units.filter(u => u.compoundId === data.get("compound"));
+    if (data.get("minPrice")) units = units.filter(u => u.price >= Number(data.get("minPrice")));
+    if (data.get("maxPrice")) units = units.filter(u => u.price <= Number(data.get("maxPrice")));
+    if (data.get("bedrooms")) units = units.filter(u => u.bedrooms === Number(data.get("bedrooms")));
+    if (data.get("bathrooms")) units = units.filter(u => u.bathrooms === Number(data.get("bathrooms")));
+    if (data.get("area")) units = units.filter(u => u.area >= Number(data.get("area")));
+    if (data.get("floors")) units = units.filter(u => u.floors === Number(data.get("floors")));
+    if (data.get("pool") === "yes") units = units.filter(u => u.pool);
+    if (data.get("pool") === "no") units = units.filter(u => !u.pool);
+    if (data.get("garden") === "yes") units = units.filter(u => u.garden);
+    if (data.get("garden") === "no") units = units.filter(u => !u.garden);
+    setFilteredUnits(units);
+  };
+
   return (
     <>
       <Head>
@@ -39,10 +65,10 @@ export default function Home() {
           <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:8}}>
         <VoiceSearch onResult={(text) => alert(`نتيجة البحث الصوتي: ${text}`)} />
       </div>
-          <FilterBar />
+          <FilterBar onSubmit={handleFilter} />
           {/* خريطة تفاعلية للوحدات العقارية */}
           <div style={{ width: "100%", maxWidth: 900, margin: "32px auto" }}>
-            <MapComponent units={mockUnits} />
+            <MapComponent units={filteredUnits} />
           </div>
 
           <div className={styles.ctas}>
