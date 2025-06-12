@@ -1,0 +1,22 @@
+.langSwitcher {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin: 12px 24px 0 0;
+}
+.langSwitcher button {
+  background: #f5f5f5;
+  color: #222;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 6px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.langSwitcher button.active,
+.langSwitcher button:hover {
+  background: linear-gradient(90deg, #0070f3 0%, #00c6fb 100%);
+  color: #fff;
+  border: 1.5px solid #0070f3;
+}

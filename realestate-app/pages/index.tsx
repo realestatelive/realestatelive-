@@ -7,6 +7,7 @@ import FilterBar from "@/components/FilterBar";
 import { mockUnits } from "@/types/mockUnits";
 import AdsBar from "@/components/AdsBar";
 import VoiceSearch from "@/components/VoiceSearch";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
