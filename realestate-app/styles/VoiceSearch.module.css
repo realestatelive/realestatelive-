@@ -1,0 +1,18 @@
+.voiceBtn {
+  background: linear-gradient(90deg, #00c6fb 0%, #0070f3 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+  transition: background 0.2s;
+}
+.voiceBtn:hover {
+  background: linear-gradient(90deg, #009ec3 0%, #005bb5 100%);
+}

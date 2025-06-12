@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import FilterBar from "@/components/FilterBar";
 import { mockUnits } from "@/types/mockUnits";
 import AdsBar from "@/components/AdsBar";
+import VoiceSearch from "@/components/VoiceSearch";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,9 @@ export default function Home() {
       >
         <main className={styles.main}>
           <AdsBar />
+          <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:8}}>
+        <VoiceSearch onResult={(text) => alert(`نتيجة البحث الصوتي: ${text}`)} />
+      </div>
           <FilterBar />
           {/* خريطة تفاعلية للوحدات العقارية */}
           <div style={{ width: "100%", maxWidth: 900, margin: "32px auto" }}>
