@@ -8,6 +8,7 @@ import { mockUnits } from "@/types/mockUnits";
 import AdsBar from "@/components/AdsBar";
 import VoiceSearch from "@/components/VoiceSearch";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ChatBot from "@/components/ChatBot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -114,6 +115,7 @@ export default function Home() {
             Go to nextjs.org →
           </a>
         </footer>
+        <ChatBot />
       </div>
     </>
   );
