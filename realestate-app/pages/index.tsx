@@ -10,6 +10,7 @@ import VoiceSearch from "@/components/VoiceSearch";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ChatBot from "@/components/ChatBot";
 import { useState } from "react";
+import UnitCard from "@/components/UnitCard";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,6 +71,15 @@ export default function Home() {
           <div style={{ width: "100%", maxWidth: 900, margin: "32px auto" }}>
             <MapComponent units={filteredUnits} />
           </div>
+
+          {/* عرض نتائج الوحدات */}
+          <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',margin:'32px auto',maxWidth:1200}}>
+          {filteredUnits.length === 0 ? (
+            <div style={{color:'#b00',fontWeight:'bold',fontSize:'1.2rem',margin:'32px'}}>لا توجد وحدات مطابقة للبحث</div>
+          ) : (
+            filteredUnits.map(unit => <UnitCard key={unit.id} unit={unit} />)
+          )}
+        </div>
 
           <div className={styles.ctas}>
             <a
