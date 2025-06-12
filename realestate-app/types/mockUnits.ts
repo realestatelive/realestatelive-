@@ -1,70 +1,60 @@
 import { Unit } from "@/types/realestate";
+import { mockDevelopers, mockCompounds } from "./mockDevelopers";
 
-export const mockUnits: Unit[] = [
-  {
-    id: "1",
-    title: "فيلا فاخرة في كمباوند بالم هيلز",
-    type: "فيلا",
-    for: "بيع",
-    country: "مصر",
-    city: "الشيخ زايد",
-    developerId: "dev1",
-    compoundId: "comp1",
-    price: 12000000,
-    bedrooms: 5,
-    bathrooms: 4,
-    area: 450,
-    images: ["/file.svg"],
-    rating: 4.8,
-    description: "فيلا بتشطيب سوبر لوكس وحديقة خاصة وحمام سباحة.",
-    features: ["حديقة", "حمام سباحة", "تشطيب فاخر"],
-    ownerName: "Palm Hills",
-    garden: true,
-    pool: true,
-    floors: 2,
-  },
-  {
-    id: "2",
-    title: "شقة فاخرة في التجمع الخامس",
-    type: "شقة",
-    for: "ايجار",
-    country: "مصر",
-    city: "القاهرة الجديدة",
-    developerId: "dev2",
-    compoundId: "comp2",
-    price: 25000,
-    bedrooms: 3,
-    bathrooms: 2,
-    area: 180,
-    images: ["/window.svg"],
-    rating: 4.5,
-    description: "شقة مفروشة بالكامل في موقع مميز.",
-    features: ["مفروشة", "موقع مركزي"],
-    ownerName: "Mountain View",
-    garden: false,
-    pool: false,
-    floors: 1,
-  },
-  {
-    id: "3",
-    title: "قصر فاخر في الساحل الشمالي",
-    type: "قصر",
-    for: "بيع",
-    country: "مصر",
-    city: "الساحل الشمالي",
-    developerId: "dev3",
-    compoundId: "comp3",
-    price: 45000000,
-    bedrooms: 8,
-    bathrooms: 7,
-    area: 1200,
-    images: ["/globe.svg"],
-    rating: 5,
-    description: "قصر على البحر مباشرة مع مسبح وحديقة ضخمة.",
-    features: ["مسبح خاص", "إطلالة بحرية", "حديقة ضخمة"],
-    ownerName: "Emaar Misr",
-    garden: true,
-    pool: true,
-    floors: 3,
-  },
+// صور متنوعة للوحدات
+const images = [
+  "/file.svg",
+  "/window.svg",
+  "/globe.svg",
+  "/vercel.svg",
+  "/next.svg",
 ];
+const panoramaImages = ["/panorama1.jpg", "/panorama2.jpg"];
+const model3dUrl = "/3dmodel.glb";
+const vrUrl = "/vrmodel.html";
+
+export const mockUnits: Unit[] = Array.from({ length: 60 }, (_, i) => {
+  const compound = mockCompounds[i % mockCompounds.length];
+  const developer = mockDevelopers.find((d) => d.id === compound.developerId);
+  const typeList = [
+    "قصر",
+    "فيلا",
+    "تاون هاوس",
+    "توين هاوس",
+    "شقة",
+    "استوديو",
+    "عيادة",
+    "محل",
+    "مكتب اداري",
+    "غرف فندقية",
+  ];
+  const type = typeList[i % typeList.length] as Unit["type"];
+  return {
+    id: `unit${i + 1}`,
+    title: `${type} في ${compound.name}`,
+    type,
+    for: i % 2 === 0 ? "بيع" : "ايجار",
+    country: compound.location.includes("دبي") ? "الإمارات" : "مصر",
+    city: compound.location,
+    developerId: developer?.id || "",
+    compoundId: compound.id,
+    price: 1000000 + i * 50000,
+    bedrooms: (i % 6) + 1,
+    bathrooms: (i % 4) + 1,
+    area: 80 + (i % 10) * 20,
+    images: [images[i % images.length]],
+    panoramaImages: i % 3 === 0 ? panoramaImages : undefined,
+    model3dUrl: i % 4 === 0 ? model3dUrl : undefined,
+    vrUrl: i % 5 === 0 ? vrUrl : undefined,
+    rating: 4 + (i % 2) * 0.5,
+    description: `وحدة ${type} مميزة في ${compound.name} بموقع استراتيجي وخدمات متكاملة.`,
+    features: [
+      i % 2 === 0 ? "حديقة" : "بدون حديقة",
+      i % 3 === 0 ? "حمام سباحة" : "بدون حمام سباحة",
+    ],
+    ownerName: developer?.name,
+    garden: i % 2 === 0,
+    pool: i % 3 === 0,
+    floors: (i % 3) + 1,
+  };
+});
