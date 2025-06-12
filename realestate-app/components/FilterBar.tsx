@@ -1,5 +1,19 @@
 import React from "react";
 import styles from "@/styles/FilterBar.module.css";
+import { mockDevelopers, mockCompounds } from "@/types/mockDevelopers";
+
+const unitTypes = [
+  "قصر",
+  "فيلا",
+  "تاون هاوس",
+  "توين هاوس",
+  "شقة",
+  "استوديو",
+  "عيادة",
+  "محل",
+  "مكتب اداري",
+  "غرف فندقية"
+];
 
 const FilterBar: React.FC = () => {
   return (
@@ -18,24 +32,28 @@ const FilterBar: React.FC = () => {
         <option value="الأردن">الأردن</option>
       </select>
       <select name="type" defaultValue="شقة">
-        <option value="قصر">قصر</option>
-        <option value="فيلا">فيلا</option>
-        <option value="تاون هاوس">تاون هاوس</option>
-        <option value="توين هاوس">توين هاوس</option>
-        <option value="شقة">شقة</option>
-        <option value="استوديو">استوديو</option>
-        <option value="عيادة">عيادة</option>
-        <option value="محل">محل</option>
-        <option value="مكتب اداري">مكتب اداري</option>
-        <option value="غرف فندقية">غرف فندقية</option>
+        {unitTypes.map((type) => (
+          <option key={type} value={type}>{type}</option>
+        ))}
       </select>
       <select name="for" defaultValue="بيع">
         <option value="بيع">للبيع</option>
         <option value="ايجار">للإيجار</option>
       </select>
+      <select name="developer">
+        <option value="">اختر المطور</option>
+        {mockDevelopers.map((dev) => (
+          <option key={dev.id} value={dev.id}>{dev.name}</option>
+        ))}
+      </select>
+      <select name="compound">
+        <option value="">اختر الكمباوند</option>
+        {mockCompounds.map((comp) => (
+          <option key={comp.id} value={comp.id}>{comp.name}</option>
+        ))}
+      </select>
       <input type="number" name="minPrice" placeholder="أقل سعر" min={0} />
       <input type="number" name="maxPrice" placeholder="أعلى سعر" min={0} />
-      <input type="text" name="developer" placeholder="اسم المطور أو الكمباوند" />
       <button type="submit">بحث</button>
     </form>
   );
