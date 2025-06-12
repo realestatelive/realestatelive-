@@ -47,7 +47,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ units }) => {
       el.style.cursor = 'pointer';
       el.title = unit.title;
       el.onclick = () => {
-        alert(`تفاصيل الوحدة: ${unit.title}`);
+        window.location.href = `/unit/${unit.id}`;
       };
       new mapboxgl.Marker(el).setLngLat(coords).addTo(map.current!);
     });
