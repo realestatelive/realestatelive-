@@ -2,14 +2,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-  padding: 24px 20px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 18px;
+  box-shadow: 0 2px 24px rgba(0,112,243,0.07);
+  padding: 28px 20px;
   margin: 0 auto 32px auto;
-  max-width: 900px;
+  max-width: 1000px;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(6px) saturate(1.1);
+  border: 1.5px solid #e3f0ff;
 }
 .filterBar select,
 .filterBar input {

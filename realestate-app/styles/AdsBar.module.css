@@ -4,17 +4,26 @@
   color: #fff;
   font-size: 1.1rem;
   font-weight: bold;
-  padding: 12px 0;
+  padding: 14px 0;
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 100;
   overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,112,243,0.09);
+  letter-spacing: 1px;
+  border-bottom: 2px solid #e3f0ff;
+  animation: adsBarFade 2s ease-in;
+}
+@keyframes adsBarFade {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .adsText {
   display: inline-block;
   white-space: nowrap;
   animation: scroll-rtl 18s linear infinite;
+  font-family: 'Cairo', 'Tajawal', Arial, sans-serif;
 }
 @keyframes scroll-rtl {
   0% { transform: translateX(100vw); }

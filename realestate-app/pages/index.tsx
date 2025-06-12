@@ -11,6 +11,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ChatBot from "@/components/ChatBot";
 import { useState } from "react";
 import UnitCard from "@/components/UnitCard";
+import RealestateLiveLogo from "@/components/RealestateLiveLogo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -64,6 +65,9 @@ export default function Home() {
       >
         <main className={styles.main}>
           <AdsBar />
+          <div style={{display:'flex',justifyContent:'center',alignItems:'center',margin:'24px 0 0 0'}}>
+        <RealestateLiveLogo size={44} />
+      </div>
           <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:8}}>
         <VoiceSearch onResult={(text) => alert(`نتيجة البحث الصوتي: ${text}`)} />
       </div>
