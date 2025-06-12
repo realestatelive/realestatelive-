@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import dynamic from "next/dynamic";
 import FilterBar from "@/components/FilterBar";
+import { mockUnits } from "@/types/mockUnits";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,24 +32,9 @@ export default function Home() {
       >
         <main className={styles.main}>
           <FilterBar />
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js logo"
-            width={180}
-            height={38}
-            priority
-          />
-          <ol>
-            <li>
-              Get started by editing <code>pages/index.tsx</code>.
-            </li>
-            <li>Save and see your changes instantly.</li>
-          </ol>
-
           {/* خريطة تفاعلية للوحدات العقارية */}
           <div style={{ width: "100%", maxWidth: 900, margin: "32px auto" }}>
-            <MapComponent />
+            <MapComponent units={mockUnits} />
           </div>
 
           <div className={styles.ctas}>
