@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import dynamic from "next/dynamic";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,6 +13,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const MapComponent = dynamic(() => import("@/components/MapComponent"), { ssr: false });
 
 export default function Home() {
   return (
@@ -40,6 +43,11 @@ export default function Home() {
             </li>
             <li>Save and see your changes instantly.</li>
           </ol>
+
+          {/* خريطة تفاعلية للوحدات العقارية */}
+          <div style={{ width: "100%", maxWidth: 900, margin: "32px auto" }}>
+            <MapComponent />
+          </div>
 
           <div className={styles.ctas}>
             <a
