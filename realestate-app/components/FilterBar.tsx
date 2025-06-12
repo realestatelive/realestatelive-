@@ -15,6 +15,12 @@ const unitTypes = [
   "غرف فندقية"
 ];
 
+const yesNo = [
+  { label: "أي", value: "" },
+  { label: "نعم", value: "yes" },
+  { label: "لا", value: "no" },
+];
+
 const FilterBar: React.FC = () => {
   return (
     <form className={styles.filterBar}>
@@ -54,6 +60,20 @@ const FilterBar: React.FC = () => {
       </select>
       <input type="number" name="minPrice" placeholder="أقل سعر" min={0} />
       <input type="number" name="maxPrice" placeholder="أعلى سعر" min={0} />
+      <input type="number" name="bedrooms" placeholder="عدد الغرف" min={0} />
+      <input type="number" name="bathrooms" placeholder="عدد الحمامات" min={0} />
+      <input type="number" name="area" placeholder="المساحة (م²)" min={0} />
+      <input type="number" name="floors" placeholder="عدد الطوابق" min={0} />
+      <select name="pool">
+        <option value="">حمام سباحة</option>
+        <option value="yes">نعم</option>
+        <option value="no">لا</option>
+      </select>
+      <select name="garden">
+        <option value="">حديقة</option>
+        <option value="yes">نعم</option>
+        <option value="no">لا</option>
+      </select>
       <button type="submit">بحث</button>
     </form>
   );
