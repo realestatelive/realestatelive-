@@ -40,3 +40,25 @@
 .filterBar button:hover {
   background: linear-gradient(90deg, #005bb5 0%, #009ec3 100%);
 }
+.sliderLabel {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 2px;
+  margin-right: 8px;
+}
+.sliderBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 180px;
+  margin: 0 8px;
+}
+.slider {
+  width: 140px;
+  accent-color: #0070f3;
+}
+.sliderValue {
+  font-size: 0.98rem;
+  color: #0070f3;
+  margin-right: 8px;
+}

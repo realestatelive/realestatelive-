@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/FilterBar.module.css";
 import { mockDevelopers, mockCompounds } from "@/types/mockDevelopers";
 
@@ -22,6 +22,9 @@ const yesNo = [
 ];
 
 const FilterBar: React.FC<{ onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void }> = ({ onSubmit }) => {
+  const [minPrice, setMinPrice] = useState(500000);
+  const [maxPrice, setMaxPrice] = useState(10000000);
+
   return (
     <form className={styles.filterBar} onSubmit={onSubmit}>
       <select name="country" defaultValue="مصر">
@@ -58,8 +61,6 @@ const FilterBar: React.FC<{ onSubmit?: (e: React.FormEvent<HTMLFormElement>) => 
           <option key={comp.id} value={comp.id}>{comp.name}</option>
         ))}
       </select>
-      <input type="number" name="minPrice" placeholder="أقل سعر" min={0} />
-      <input type="number" name="maxPrice" placeholder="أعلى سعر" min={0} />
       <input type="number" name="bedrooms" placeholder="عدد الغرف" min={0} />
       <input type="number" name="bathrooms" placeholder="عدد الحمامات" min={0} />
       <input type="number" name="area" placeholder="المساحة (م²)" min={0} />
@@ -74,6 +75,16 @@ const FilterBar: React.FC<{ onSubmit?: (e: React.FormEvent<HTMLFormElement>) => 
         <option value="yes">نعم</option>
         <option value="no">لا</option>
       </select>
+      <div className={styles.sliderBox}>
+        <label className={styles.sliderLabel}>الحد الأدنى للسعر</label>
+        <input type="range" name="minPrice" min={0} max={maxPrice} step={50000} value={minPrice} onChange={e => setMinPrice(Number(e.target.value))} className={styles.slider} />
+        <span className={styles.sliderValue}>{minPrice.toLocaleString()} جنيه</span>
+      </div>
+      <div className={styles.sliderBox}>
+        <label className={styles.sliderLabel}>الحد الأقصى للسعر</label>
+        <input type="range" name="maxPrice" min={minPrice} max={20000000} step={50000} value={maxPrice} onChange={e => setMaxPrice(Number(e.target.value))} className={styles.slider} />
+        <span className={styles.sliderValue}>{maxPrice.toLocaleString()} جنيه</span>
+      </div>
       <button type="submit">بحث</button>
     </form>
   );
