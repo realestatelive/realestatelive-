@@ -91,3 +91,7 @@
 .detailsBtn:hover {
   background: linear-gradient(90deg, #005bb5 0%, #009ec3 100%);
 }
+.card {
+  color: #00ffe7;
+  text-shadow: 0 0 8px #00ffe7cc, 0 0 2px #00c6fb;
+}

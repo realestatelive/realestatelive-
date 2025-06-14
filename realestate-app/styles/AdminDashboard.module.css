@@ -1,0 +1,42 @@
+.dashboardContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #181f2a 0%, #00c6fb 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 0 0 0;
+}
+.title {
+  color: #00ffe7;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 32px;
+  text-shadow: 0 0 16px #00ffe7cc, 0 0 4px #00c6fb;
+}
+.sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+.sectionBox {
+  background: rgba(0,0,0,0.18);
+  border: 2.5px solid #00ffe7;
+  border-radius: 18px;
+  color: #00ffe7;
+  text-shadow: 0 0 8px #00ffe7cc;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 36px 48px;
+  min-width: 220px;
+  text-align: center;
+  box-shadow: 0 0 24px #00c6fb44;
+  transition: box-shadow 0.2s, background 0.2s, color 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.sectionBox:hover {
+  background: #00c6fb;
+  color: #181f2a;
+  box-shadow: 0 0 36px #00ffe7, 0 0 16px #00c6fb;
+}

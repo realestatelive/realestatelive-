@@ -1,6 +1,12 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-main: #2d3a4a;
+  --color-accent: #f7b731; /* برتقالي ذهبي */
+  --color-blue: #3867d6;  /* سماوي ملكي */
+  --color-pink: #ff6f91;  /* وردي/روز */
+  --color-rose: #f78ca2;  /* روز فاتح */
+  --color-gray: #444a57;  /* رمادي غامق */
+  --color-bg: #f5f6fa;
+  --color-bg-glass: rgba(255,255,255,0.85);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,12 +22,47 @@ body {
   overflow-x: hidden;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body, html {
+  color: var(--color-gray);
+  background: url('/background.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #f5f6fa 0%, #dff9fb 100%);
+  font-family: var(--font-geist-sans), Cairo, Tahoma, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-accent);
+  text-shadow: 0 0 8px #fff2, 0 0 2px var(--color-blue);
+}
+
+a, .colored, .unitInfo, .sliderTitle, .sectionBox, .chatHeader, .botMsg, .userMsg {
+  color: var(--color-blue) !important;
+  text-shadow: 0 0 8px #fff2;
+}
+
+input, select, button {
+  color: var(--color-pink);
+  background: var(--color-bg-glass);
+  border: 1.5px solid var(--color-blue);
+  border-radius: 8px;
+  font-weight: bold;
+  text-shadow: 0 0 6px #fff2;
+}
+
+input::placeholder, select option {
+  color: var(--color-rose);
+  opacity: 1;
+}
+
+button {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-blue));
+  color: var(--color-bg);
+  font-weight: bold;
+  box-shadow: 0 0 8px #fff2;
+  transition: background 0.2s, color 0.2s;
+}
+
+button:hover {
+  background: linear-gradient(90deg, var(--color-blue), var(--color-accent));
+  color: var(--color-pink);
 }
 
 * {

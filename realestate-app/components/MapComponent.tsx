@@ -36,9 +36,10 @@ const MapComponent: React.FC<MapComponentProps> = ({ units }) => {
       center: [31.2357, 30.0444], // القاهرة
       zoom: 7,
     });
-    // إضافة رموز للوحدات
+    // إضافة رموز للوحدات (كمباوند أو مستقلة)
     units.forEach((unit) => {
-      const coords = cityCoords[unit.city] || [31.2357, 30.0444];
+      // استخدم coords من الوحدة مباشرة إذا متوفرة
+      const coords = unit.coords || cityCoords[unit.city] || [31.2357, 30.0444];
       const el = document.createElement('div');
       el.style.backgroundImage = `url(${iconByType[unit.type] || '/file.svg'})`;
       el.style.width = '36px';

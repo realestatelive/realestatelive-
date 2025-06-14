@@ -29,6 +29,7 @@ export interface Developer {
   name: string;
   logoUrl?: string;
   description?: string;
+  achievements?: string[];
   compounds?: Compound[];
 }
 
@@ -38,6 +39,8 @@ export interface Compound {
   location: string;
   developerId: string;
   imageUrl?: string;
+  description?: string;
+  facilities?: string[];
 }
 
 export interface Unit {

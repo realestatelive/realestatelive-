@@ -9,9 +9,10 @@ import AdsBar from "@/components/AdsBar";
 import VoiceSearch from "@/components/VoiceSearch";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ChatBot from "@/components/ChatBot";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import UnitCard from "@/components/UnitCard";
 import RealestateLiveLogo from "@/components/RealestateLiveLogo";
+import UnitSlider from "@/components/UnitSlider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +26,31 @@ const geistMono = Geist_Mono({
 
 const MapComponent = dynamic(() => import("@/components/MapComponent"), { ssr: false });
 
+function getSuggestedUnits(userHistory: string[]): typeof mockUnits {
+  // ذكاء اصطناعي وهمي: يقترح وحدات بناءً على آخر بحث أو تفضيل
+  if (!userHistory.length) return [...mockUnits].slice(0, 5);
+  const last = userHistory[userHistory.length - 1];
+  // مثال: لو بحث عن "فيلا" أو "ساحل"...
+  return mockUnits.filter(u =>
+    last.includes(u.type) || last.includes(u.city) || last.includes(u.title)
+  ).slice(0, 5);
+}
+
+// وحدات الأكثر مشاهدة (مثال: الأعلى سعراً)
+const mostViewed = [...mockUnits].sort((a, b) => b.price - a.price).slice(0, 5);
+
 export default function Home() {
   const [filteredUnits, setFilteredUnits] = useState(mockUnits);
+  const [userHistory, setUserHistory] = useState<string[]>([]);
+  const [suggested, setSuggested] = useState<typeof mockUnits>([]);
+  const voiceInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    // مثال: استرجاع آخر استفسار من الدردشة الذكية (لو متوفر)
+    const lastQuery = localStorage.getItem("lastChatQuery");
+    if (lastQuery) setUserHistory([lastQuery]);
+    setSuggested(getSuggestedUnits([lastQuery || ""]));
+  }, []);
 
   // فلترة الوحدات بناءً على القيم المدخلة
   const handleFilter = (e: React.FormEvent<HTMLFormElement>) => {
@@ -64,15 +88,19 @@ export default function Home() {
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
         <main className={styles.main}>
+          <div className={styles.headerRow}>
+            <RealestateLiveLogo />
+          </div>
           <AdsBar />
-          <div style={{display:'flex',justifyContent:'center',alignItems:'center',margin:'24px 0 0 0'}}>
-        <RealestateLiveLogo size={44} />
-      </div>
-          <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:8}}>
-        <VoiceSearch onResult={(text) => alert(`نتيجة البحث الصوتي: ${text}`)} />
-      </div>
-          <FilterBar onSubmit={handleFilter} />
-          {/* خريطة تفاعلية للوحدات العقارية */}
+          <FilterBar onSubmit={handleFilter} inputRef={voiceInputRef} />
+          <VoiceSearch onResult={(text) => {
+            // عند استقبال نتيجة صوتية: ضعها في أول خانة نصية (مثلاً البحث عن نوع الوحدة)
+            if (voiceInputRef.current) {
+              voiceInputRef.current.value = text;
+              // يمكن تفعيل البحث تلقائياً أو فلترة مباشرة
+            }
+          }} />
+          <UnitSlider title="وحدات مقترحة لك" units={suggested} />
           <div style={{ width: "100%", maxWidth: 900, margin: "32px auto" }}>
             <MapComponent units={filteredUnits} />
           </div>
@@ -85,6 +113,9 @@ export default function Home() {
             filteredUnits.map(unit => <UnitCard key={unit.id} unit={unit} />)
           )}
         </div>
+
+        {/* سلايدر للوحدات الأكثر مشاهدة */}
+        <UnitSlider title="الوحدات الأكثر مشاهدة" units={mostViewed} />
 
           <div className={styles.ctas}>
             <a
@@ -113,48 +144,7 @@ export default function Home() {
           </div>
         </main>
         <footer className={styles.footer}>
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-            />
-            Learn
-          </a>
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
-            />
-            Examples
-          </a>
-          <a
-            href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-            />
-            Go to nextjs.org →
-          </a>
+          جميع الحقوق محفوظة © شركة بيت 2025
         </footer>
         <ChatBot />
       </div>

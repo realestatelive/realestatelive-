@@ -17,6 +17,7 @@
 .langSwitcher button.active,
 .langSwitcher button:hover {
   background: linear-gradient(90deg, #0070f3 0%, #00c6fb 100%);
-  color: #fff;
+  color: #00ffe7;
+  text-shadow: 0 0 8px #00ffe7cc, 0 0 2px #00c6fb;
   border: 1.5px solid #0070f3;
 }

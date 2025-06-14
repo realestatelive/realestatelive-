@@ -1,0 +1,72 @@
+.sliderBox {
+  background: rgba(0,0,0,0.18);
+  border-radius: 18px;
+  border: 2.5px solid #00ffe7;
+  box-shadow: 0 0 24px #00c6fb44;
+  margin: 32px auto;
+  padding: 24px 0 16px 0;
+  max-width: 520px;
+  text-align: center;
+}
+.sliderTitle {
+  color: #00ffe7;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 18px;
+  text-shadow: 0 0 8px #00ffe7cc;
+}
+.sliderContent {
+  position: relative;
+  min-height: 220px;
+}
+.slide {
+  transition: opacity 0.7s;
+  opacity: 0.2;
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  width: 100%;
+  z-index: 1;
+}
+.active {
+  opacity: 1 !important;
+  z-index: 2;
+}
+.unitLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #00ffe7;
+}
+.unitImg {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #00c6fb44;
+  margin-bottom: 10px;
+}
+.unitInfo {
+  color: #00ffe7;
+  font-weight: bold;
+  text-shadow: 0 0 8px #00ffe7cc;
+}
+.dots {
+  margin-top: 12px;
+}
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #00c6fb;
+  margin: 0 4px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: background 0.2s, opacity 0.2s;
+}
+.activeDot {
+  background: #00ffe7;
+  opacity: 1;
+  box-shadow: 0 0 8px #00ffe7cc;
+}

@@ -119,19 +119,16 @@ a.secondary {
 }
 
 .footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-}
-
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer img {
-  flex-shrink: 0;
+  width: 100%;
+  background: #fff;
+  color: #f7b731;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 24px 0 12px 0;
+  border-top: 2px solid #3867d6;
+  box-shadow: 0 -2px 12px #dff9fb;
+  margin-top: 48px;
 }
 
 /* Enable hover only on non-touch devices */

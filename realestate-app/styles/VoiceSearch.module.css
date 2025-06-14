@@ -1,6 +1,7 @@
 .voiceBtn {
   background: linear-gradient(90deg, #00c6fb 0%, #0070f3 100%);
-  color: #fff;
+  color: #00ffe7;
+  text-shadow: 0 0 8px #00ffe7cc, 0 0 2px #00c6fb;
   border: none;
   border-radius: 8px;
   padding: 10px 22px;

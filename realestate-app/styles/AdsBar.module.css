@@ -1,7 +1,7 @@
 .adsBar {
   width: 100vw;
   background: linear-gradient(90deg, #0070f3 0%, #00c6fb 100%);
-  color: #fff;
+  color: #00ffe7;
   font-size: 1.1rem;
   font-weight: bold;
   padding: 14px 0;
@@ -14,6 +14,7 @@
   letter-spacing: 1px;
   border-bottom: 2px solid #e3f0ff;
   animation: adsBarFade 2s ease-in;
+  text-shadow: 0 0 8px #00ffe7cc, 0 0 2px #00c6fb;
 }
 @keyframes adsBarFade {
   from { opacity: 0; transform: translateY(-30px); }
