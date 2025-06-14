@@ -22,8 +22,8 @@ export default function UnitDetails() {
   const unitOnMap = [{ ...unit }];
 
   return (
-    <div className={styles.detailsContainer}>
-      <h1 className={styles.title}>{unit.title}</h1>
+    <div className={styles.detailsContainer} style={{background:'var(--color-accent)',borderRadius:18}}>
+      <h1 className={styles.title} style={{color:'#fff',background:'var(--color-blue)',padding:'8px 0',borderRadius:12}}>تفاصيل الوحدة</h1>
       <div className={styles.imagesSection} style={{flexWrap:'wrap'}}>
         {unit.images.map((img, i) => (
           <img key={i} src={img} alt={unit.title} className={styles.unitImage} />
@@ -41,7 +41,7 @@ export default function UnitDetails() {
           <iframe src={unit.vrUrl} title="VR" className={styles.vrFrame}></iframe>
         )}
       </div>
-      <div className={styles.infoSection} style={{wordBreak:'break-word'}}>
+      <div className={styles.infoSection} style={{color:'#fff',background:'var(--color-green)',borderRadius:12,padding:'12px 8px',margin:'12px 0'}}>
         <p><b>النوع:</b> <span className={styles.colored}>{unit.type}</span></p>
         <p><b>الغرض:</b> <span className={styles.colored}>{unit.for}</span></p>
         <p><b>الدولة:</b> <span className={styles.colored}>{unit.country}</span></p>
@@ -83,8 +83,8 @@ export default function UnitDetails() {
       <div style={{width:'100%',maxWidth:600,margin:'32px auto'}}>
         <MapComponent units={unitOnMap} />
       </div>
-      <footer className={styles.footer}>
-        جميع الحقوق محفوظة © شركة بيت 2025
+      <footer className={styles.footer} style={{background:'var(--color-blue)',color:'#fff',position:'fixed',bottom:0,left:0,width:'100%',borderRadius:0}}>
+        جميع الحقوق محفوظة © شركة بيتي AR 2025
       </footer>
     </div>
   );

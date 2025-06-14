@@ -32,8 +32,8 @@ const financeProviders = [
 ];
 
 const FilterBar: React.FC<{ onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void, inputRef?: any }> = ({ onSubmit, inputRef }) => {
-  const [minPrice, setMinPrice] = useState(500000);
-  const [maxPrice, setMaxPrice] = useState(10000000);
+  const [minPrice, setMinPrice] = useState(100000);
+  const [maxPrice, setMaxPrice] = useState(200000000);
 
   return (
     <form className={styles.filterBar} onSubmit={onSubmit}>
@@ -97,12 +97,12 @@ const FilterBar: React.FC<{ onSubmit?: (e: React.FormEvent<HTMLFormElement>) => 
       </select>
       <div className={styles.sliderBox}>
         <label className={styles.sliderLabel}>الحد الأدنى للسعر</label>
-        <input type="range" name="minPrice" min={0} max={maxPrice} step={50000} value={minPrice} onChange={e => setMinPrice(Number(e.target.value))} className={styles.slider} />
+        <input type="range" name="minPrice" min={100000} max={maxPrice} step={100000} value={minPrice} onChange={e => setMinPrice(Number(e.target.value))} className={styles.slider} />
         <span className={styles.sliderValue}>{minPrice.toLocaleString()} جنيه</span>
       </div>
       <div className={styles.sliderBox}>
         <label className={styles.sliderLabel}>الحد الأقصى للسعر</label>
-        <input type="range" name="maxPrice" min={minPrice} max={20000000} step={50000} value={maxPrice} onChange={e => setMaxPrice(Number(e.target.value))} className={styles.slider} />
+        <input type="range" name="maxPrice" min={minPrice} max={200000000} step={100000} value={maxPrice} onChange={e => setMaxPrice(Number(e.target.value))} className={styles.slider} />
         <span className={styles.sliderValue}>{maxPrice.toLocaleString()} جنيه</span>
       </div>
       <input ref={inputRef} type="text" name="search" placeholder="ابحث عن وحدة أو منطقة..." className={styles.searchInput} />

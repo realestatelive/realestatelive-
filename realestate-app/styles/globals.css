@@ -1,10 +1,10 @@
 :root {
   --color-main: #2d3a4a;
-  --color-accent: #f7b731; /* برتقالي ذهبي */
-  --color-blue: #3867d6;  /* سماوي ملكي */
-  --color-pink: #ff6f91;  /* وردي/روز */
-  --color-rose: #f78ca2;  /* روز فاتح */
-  --color-gray: #444a57;  /* رمادي غامق */
+  --color-accent: #ff9800; /* برتقالي واضح */
+  --color-blue: #1976d2;  /* أزرق واضح */
+  --color-green: #43a047; /* أخضر واضح */
+  --color-yellow: #ffd600; /* أصفر واضح */
+  --color-gray: #222831;  /* رمادي غامق */
   --color-bg: #f5f6fa;
   --color-bg-glass: rgba(255,255,255,0.85);
 }
@@ -23,32 +23,33 @@ body {
 }
 
 body, html {
-  color: var(--color-gray);
-  background: url('/background.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #f5f6fa 0%, #dff9fb 100%);
+  color: var(--color-main);
+  background: url('/background.jpg') center center/cover no-repeat fixed, linear-gradient(135deg, #f5f6fa 0%, #e3f2fd 100%);
   font-family: var(--font-geist-sans), Cairo, Tahoma, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-accent);
-  text-shadow: 0 0 8px #fff2, 0 0 2px var(--color-blue);
+  text-shadow: none;
 }
 
 a, .colored, .unitInfo, .sliderTitle, .sectionBox, .chatHeader, .botMsg, .userMsg {
   color: var(--color-blue) !important;
-  text-shadow: 0 0 8px #fff2;
+  text-shadow: none;
 }
 
 input, select, button {
-  color: var(--color-pink);
+  color: var(--color-green);
   background: var(--color-bg-glass);
   border: 1.5px solid var(--color-blue);
-  border-radius: 8px;
+  border-radius: 12px;
   font-weight: bold;
-  text-shadow: 0 0 6px #fff2;
+  text-shadow: none;
+  backdrop-filter: blur(8px);
 }
 
 input::placeholder, select option {
-  color: var(--color-rose);
+  color: var(--color-yellow);
   opacity: 1;
 }
 

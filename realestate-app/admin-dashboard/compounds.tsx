@@ -1,4 +1,6 @@
-import React from "react";
+cd /workspaces/realestatelive-/realestate-app
+npm install
+npm run dev -- --port 3001import React from "react";
 import styles from "../../styles/AdminDashboard.module.css";
 
 const CompoundsAdmin: React.FC = () => {
